@@ -9,6 +9,8 @@
                 <div class="card">
                     <div class="card-header">Products</div>
                     <div class="card-body">
+
+                        
                         <a href="{{ url('/product/create') }}" class="btn btn-success btn-sm" title="Add New Product" style="float: right; ">
                             <i class="fa fa-plus" aria-hidden="true"></i>
                         </a>
@@ -44,6 +46,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                            @if(!empty($product) && $product->count())
                                 @foreach($product as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
@@ -62,8 +65,21 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="10">There are no data.</td>
+                                </tr>
+                            @endif
                                 </tbody>
+                               
+                               
                             </table>
+                            <br>
+                            {!! $product->links() !!}
+                            @if( request()->get('product_search') )
+                            <a href="{{ url('/product/') }}" style="float: right;  padding: 10px 10px;" title="Home"><button class="btn btn-primary btn-sm">Back</button></a>
+                            <br><br>
+                            @endif
                         </div>
                     </div>
                 </div>
