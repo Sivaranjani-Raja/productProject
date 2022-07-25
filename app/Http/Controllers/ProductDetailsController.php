@@ -57,7 +57,7 @@ class ProductDetailsController extends Controller
         $product->price = $request->price;
         $product->quantity = $request->quantity;
         $product->save();
-
+ 
         return redirect('product')->with('flash_message', 'Product Added Successfully!');  
     }
 
