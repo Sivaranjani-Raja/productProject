@@ -17,9 +17,9 @@ class ProductDetailsController extends Controller
 
         if($request->has('product_search')){
             $product = Product::search($request->product_search)
-                ->paginate(7);
+                ->paginate(5);
         }else{
-            $product = Product::paginate(7);
+            $product = Product::paginate(5);
         }
 
       return view ('product.index')->with('product', $product);
