@@ -45,10 +45,12 @@ class ProductDetailsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:191',
-            'price' => 'required|max:191',
-            'quantity' => 'required|max:191'
+            'name' => 'required|string|max:191',
+            'price' => 'required|numeric|between:0,345678',
+            'quantity' => 'required|numeric|max:191'
         ]);
+
+       
 
         $product = new Product;
         $product->name = $request->name;
@@ -93,6 +95,12 @@ class ProductDetailsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|max:191',
+            'price' => 'required|numeric|between:0,345678',
+            'quantity' => 'required|numeric|max:191'
+        ]);
+        
         $product = Product::find($id);
         $input = $request->all();
         $product->update($input);

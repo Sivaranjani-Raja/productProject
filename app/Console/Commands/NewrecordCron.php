@@ -43,7 +43,7 @@ class NewrecordCron extends Command
 
         Product::create(['name'=>'New Entry Product',
                        'quantity'=>'1',
-                        'price'=>'2000']);
+                        'price'=>'2000.00']);
         Log::info("New Retry Created Successfully!");
     }
 }
